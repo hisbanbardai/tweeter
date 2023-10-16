@@ -1,0 +1,30 @@
+nav {
+  height: 120px;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo{
+  font-family: Bungee, sans-serif;
+  font-size: 30px;
+ }
+
+ #new-tweet-text{
+  font-size: 20px;
+ }
+
+ nav > div {
+  display: flex;
+  flex-direction: column;
+ }
+
+ #angle-down-icon {
+  align-self: center;
+  font-size: 16px;
+  color: rgba(255, 0, 0);
+ }
