@@ -1,13 +1,26 @@
-header {
+.header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   background-color: #fcfc6c;
   background-image: url("../images/asfalt-dark.png");
   height: 520px;
   width: 100%;
   margin-top: 120px;
+}
+
+.header-avatar {
+  max-width: 200px;
+}
+
+.header-avatar img {
+  width: 100%;
+}
+
+.header-username {
+  font-size: 2em;
 }
 
 

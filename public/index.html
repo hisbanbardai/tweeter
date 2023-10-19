@@ -10,21 +10,25 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
       type="text/css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- External Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+3:ital,wght@0,300;0,600;1,300;1,600&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
 
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -34,21 +38,20 @@
 
   <body>
     <!-- Top nav bar (fixed) -->
-    <nav>
-      <span id="logo">tweeter</span>
-      <div>
-        <span id="new-tweet-text"><strong>Write</strong> a new tweet </span>
-        <i id="angle-down-icon" class="fa-solid fa-angles-down"></i>
+    <nav class="navbar">
+      <span class="navbar-logo">tweeter</span>
+      <div class="navbar-menu">
+        <span><strong>Write</strong> a new tweet </span>
+        <i class="fa-solid fa-angles-down"></i>
       </div>
     </nav>
-    <header>
-      <div>
+
+    <!-- header -->
+    <header class="header">
+      <div class="header-avatar">
         <img src="/images/profile-hex.png" />
       </div>
-      <br />
-      <div>
-        <h2>Hisban Shiraz</h2>
-      </div>
+      <span class="header-username"><b>Hisban</b> Shiraz</span>
     </header>
 
     <!-- Page-specific (main) content here -->
@@ -56,9 +59,9 @@
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form action="/tweets/" method="POST">
-          <label for="tweet-text">What are you humming about?</label>
+          <label for="tweet-text"><b>What are you humming about?</b></label>
           <textarea name="text" id="tweet-text"></textarea>
-          <div>
+          <div id="tweet-section">
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>

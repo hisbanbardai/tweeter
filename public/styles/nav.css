@@ -1,32 +1,35 @@
-nav {
+.navbar {
   height: 120px;
   background-color: #4056A1;
   color: #FFFFFF;
   padding-left: 1.5em;
   padding-right: 1.5em;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   position: fixed;
   width: 100%;
   top: 0;
 }
 
-#logo{
+.navbar-logo{
   font-family: Bungee, sans-serif;
   font-size: 30px;
  }
 
- #new-tweet-text{
-  font-size: 20px;
- }
-
- nav > div {
+ .navbar-menu {
   display: flex;
   flex-direction: column;
  }
 
- #angle-down-icon {
+.navbar-menu span{
+  font-size: 20px;
+ }
+
+
+ .navbar-menu i {
   align-self: center;
   font-size: 16px;
   color: rgba(255, 0, 0);
