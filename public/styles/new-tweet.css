@@ -1,0 +1,26 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#tweet-text {
+  border-width: 0px 0px 3px 0px;
+  border-color: black;
+  background-color: #f4f1ec;
+  resize: none;
+}
+
+#tweet-section {
+  display: flex;
+  justify-content: space-between;
+  font-family: Bungee, sans-serif;
+  padding-top: 15px;
+}
+
+#tweet-section > button {
+  background-color: #4056a1;
+  color: white;
+  padding: 5px 15px;
+  border:  1px;
+}
