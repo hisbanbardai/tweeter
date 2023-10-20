@@ -24,3 +24,7 @@ form {
   padding: 5px 15px;
   border:  1px;
 }
+
+.color-counter {
+  color: red;
+}
