@@ -9,6 +9,15 @@ form {
   border-color: black;
   background-color: #f4f1ec;
   resize: none;
+  line-height: 35px;
+  height: 60px;
+  padding: 10px 5px;
+  font-weight: 800;
+}
+
+#tweet-text:focus-visible {
+  border-width: 0px 0px 3px 0px;
+  outline: 0;
 }
 
 #tweet-section {
@@ -22,7 +31,7 @@ form {
   background-color: #4056a1;
   color: white;
   padding: 5px 15px;
-  border:  1px;
+  border: 1px;
 }
 
 .color-counter {
