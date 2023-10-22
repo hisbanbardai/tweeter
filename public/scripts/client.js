@@ -4,8 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function() {
-
+$(document).ready(function () {
   //FUNCTION TO CREATE TWEET ELEMENT STRUCTURE
 
   const createTweetElement = function (tweet) {
@@ -22,7 +21,7 @@ $(document).ready(function() {
       <li>${tweet.user.handle}</li>
     </ul>
   </header>
-  <textarea name="text">${tweet.content.text}</textarea>
+  <textarea name="text" readonly>${tweet.content.text}</textarea>
   <footer>
     <ul>
       <li>${timeago.format(tweet.created_at)}</li>
@@ -84,6 +83,24 @@ $(document).ready(function() {
 
     const url = "/tweets/";
     const postData = $(this).serialize();
+
+    //fetching user input's value and length
+    const textValue = $(this).find("#tweet-text").val();
+    const textLength = textValue.length;
+
+    if (!textLength) {
+      alert(
+        "You are trying to post an empty tweet. Please enter some content first."
+      );
+      return;
+    }
+
+    if (textLength > 140) {
+      alert(
+        "The maximum length of tweet is 140 characters."
+      );
+      return;
+    }
 
     $.post(url, postData)
       .done(function () {
