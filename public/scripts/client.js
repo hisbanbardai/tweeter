@@ -4,50 +4,9 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Test / driver code (temporary). Eventually will get this from the server.
-const tweetData = [
-  {
-    user: {
-      name: "Newton",
-      avatars: "https://i.imgur.com/73hZDYK.png",
-      handle: "@SirIsaac",
-    },
-    content: {
-      text: "If I have seen further it is by standing on the shoulders of giants",
-    },
-    created_at: 1461116232227,
-  },
-  {
-    user: {
-      name: "Descartes",
-      avatars: "https://i.imgur.com/nlhLi3I.png",
-      handle: "@rd",
-    },
-    content: {
-      text: "Je pense , donc je suis",
-    },
-    created_at: 1461113959088,
-  },
-];
+$(document).ready(function() {
 
-$(document).ready(function () {
-  $("form").on("submit", function (event) {
-    event.preventDefault();
-
-    $.post("/tweets/", $(this).serialize())
-      .done(function () {
-        // Handle a successful response
-        console.log("Request successful");
-      })
-      .fail(function () {
-        // Handle any errors that occurred during the request
-        console.error("Error");
-      })
-      .always(function () {
-        // This block will be executed whether the request succeeds or fails
-        console.log("Request completed.");
-      });
-  });
+  //FUNCTION TO CREATE TWEET ELEMENT STRUCTURE
 
   const createTweetElement = function (tweet) {
     //creating html structure and wrapping it in a jquery object
@@ -90,6 +49,8 @@ $(document).ready(function () {
     return $tweet;
   };
 
+  //FUNCTION TO RENDER TWEETS
+
   const renderTweets = function (tweets) {
     // loops through tweets
     // calls createTweetElement for each tweet
@@ -101,5 +62,41 @@ $(document).ready(function () {
     }
   };
 
-  renderTweets(tweetData);
+  //FUNCTION TO LOAD TWEETS
+
+  const loadTweets = function () {
+    const url = "/tweets";
+
+    $.get(url, function (data) {
+      console.log("Response received: ", data);
+    }).done(function (data) {
+      console.log("Request Successful");
+      renderTweets(data);
+    });
+  };
+
+  loadTweets();
+
+  //EVENT HANDLER: WHEN USER SUBMITS A TWEET
+
+  $("form").on("submit", function (event) {
+    event.preventDefault();
+
+    const url = "/tweets/";
+    const postData = $(this).serialize();
+
+    $.post(url, postData)
+      .done(function () {
+        // Handle a successful response
+        console.log("Request successful");
+      })
+      .fail(function () {
+        // Handle any errors that occurred during the request
+        console.error("Error");
+      })
+      .always(function () {
+        // This block will be executed whether the request succeeds or fails
+        console.log("Request completed.");
+      });
+  });
 });
