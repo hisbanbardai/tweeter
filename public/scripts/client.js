@@ -32,8 +32,7 @@ const tweetData = [
 
 $(document).ready(function() {
   
-  const $tweetButton = $('.submit-tweet');
-  $tweetButton.on('click', function(event) {
+  $('form').on('submit', function(event) {
     event.preventDefault();
   })
 
