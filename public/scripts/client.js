@@ -25,7 +25,7 @@ $(document).ready(function() {
   <textarea name="text">${tweet.content.text}</textarea>
   <footer>
     <ul>
-      <li>${tweet.created_at}</li>
+      <li>${timeago.format(tweet.created_at)}</li>
       <div>
         <li><i class="fa-solid fa-flag"></i></li>
         <li><i class="fa-solid fa-retweet"></i></li>
