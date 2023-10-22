@@ -19,23 +19,23 @@ const tweetData = {
 
 $(document).ready(function () {
   const createTweetElement = function (tweet) {
-    const markup = $(`<article class="tweet">
+    const markup = $(`<article>
   <header>
     <ul>
-      <div class="user-info">
-        <li class="user-picture">
+      <div>
+        <li>
           <img src="${tweet.user.avatars}" alt="user-picture" />
         </li>
-        <li class="user-name">${tweet.user.name}</li>
+        <li>${tweet.user.name}</li>
       </div>
-      <li class="tweeter-handle">${tweet.user.handle}</li>
+      <li>${tweet.user.handle}</li>
     </ul>
   </header>
   <textarea name="text">${tweet.content.text}</textarea>
   <footer>
     <ul>
       <li>${tweet.created_at}</li>
-      <div class="icons">
+      <div>
         <li><i class="fa-solid fa-flag"></i></li>
         <li><i class="fa-solid fa-retweet"></i></li>
         <li><i class="fa-sharp fa-solid fa-heart"></i></li>
@@ -44,14 +44,12 @@ $(document).ready(function () {
   </footer>
   </article>`);
 
-    // markup.addClass('tweet');
-    // markup.find('header > ul > div').addClass('user-info');
-    // markup.find("header > ul > div > li:nth-child(1)").addClass("user-picture");
-    // markup.find("header > ul > div > li:nth-child(2)").addClass("user-name");
-    // markup
-    //   .find("header > ul > li")
-    //   .addClass("tweeter-handle");
-    // markup.find("footer > ul > div").addClass("icons");
+    markup.addClass("tweet");
+    markup.find("header > ul > div").addClass("user-info");
+    markup.find("header > ul > div > li:nth-child(1)").addClass("user-picture");
+    markup.find("header > ul > div > li:nth-child(2)").addClass("user-name");
+    markup.find("header > ul > li").addClass("tweeter-handle");
+    markup.find("footer > ul > div").addClass("icons");
 
     const $tweet = markup;
     return $tweet;
