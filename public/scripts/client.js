@@ -30,12 +30,24 @@ const tweetData = [
   },
 ];
 
-$(document).ready(function() {
-  
-  $('form').on('submit', function(event) {
+$(document).ready(function () {
+  $("form").on("submit", function (event) {
     event.preventDefault();
-  })
 
+    $.post("/tweets/", $(this).serialize())
+      .done(function () {
+        // Handle a successful response
+        console.log("Request successful");
+      })
+      .fail(function () {
+        // Handle any errors that occurred during the request
+        console.error("Error");
+      })
+      .always(function () {
+        // This block will be executed whether the request succeeds or fails
+        console.log("Request completed.");
+      });
+  });
 
   const createTweetElement = function (tweet) {
     //creating html structure and wrapping it in a jquery object
