@@ -34,11 +34,9 @@ ul {
 .user-info {
   display: flex;
   justify-content: space-between;
-  max-width: 200px;
 }
 
 .user-info > li {
-  width: 100%;
   font-weight: 400;
 }
 
