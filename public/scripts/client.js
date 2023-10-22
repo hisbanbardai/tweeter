@@ -5,20 +5,34 @@
  */
 
 // Test / driver code (temporary). Eventually will get this from the server.
-const tweetData = {
-  user: {
-    name: "Newton",
-    avatars: "https://i.imgur.com/73hZDYK.png",
-    handle: "@SirIsaac",
+const tweetData = [
+  {
+    user: {
+      name: "Newton",
+      avatars: "https://i.imgur.com/73hZDYK.png",
+      handle: "@SirIsaac",
+    },
+    content: {
+      text: "If I have seen further it is by standing on the shoulders of giants",
+    },
+    created_at: 1461116232227,
   },
-  content: {
-    text: "If I have seen further it is by standing on the shoulders of giants",
+  {
+    user: {
+      name: "Descartes",
+      avatars: "https://i.imgur.com/nlhLi3I.png",
+      handle: "@rd",
+    },
+    content: {
+      text: "Je pense , donc je suis",
+    },
+    created_at: 1461113959088,
   },
-  created_at: 1461116232227,
-};
+];
 
 $(document).ready(function () {
   const createTweetElement = function (tweet) {
+    //creating html structure and wrapping it in a jquery object
     const markup = $(`<article>
   <header>
     <ul>
@@ -44,6 +58,9 @@ $(document).ready(function () {
   </footer>
   </article>`);
 
+    //adding classes to jquery objects
+
+    //no need to find 'article' because markup object itself represents 'article'
     markup.addClass("tweet");
     markup.find("header > ul > div").addClass("user-info");
     markup.find("header > ul > div > li:nth-child(1)").addClass("user-picture");
@@ -55,9 +72,16 @@ $(document).ready(function () {
     return $tweet;
   };
 
-  const $tweet = createTweetElement(tweetData);
+  const renderTweets = function (tweets) {
+    // loops through tweets
+    // calls createTweetElement for each tweet
+    // takes return value and appends it to the tweets container
 
-  // Test / driver code (temporary)
-  console.log($tweet); // to see what it looks like
-  $(".tweet-container").append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+    for (const tweet of tweets) {
+      const $tweet = createTweetElement(tweet);
+      $(".tweet-container").append($tweet);
+    }
+  };
+
+  renderTweets(tweetData);
 });
