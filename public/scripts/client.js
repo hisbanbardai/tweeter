@@ -30,7 +30,14 @@ const tweetData = [
   },
 ];
 
-$(document).ready(function () {
+$(document).ready(function() {
+  
+  const $tweetButton = $('.submit-tweet');
+  $tweetButton.on('click', function(event) {
+    event.preventDefault();
+  })
+
+
   const createTweetElement = function (tweet) {
     //creating html structure and wrapping it in a jquery object
     const markup = $(`<article>
@@ -79,7 +86,7 @@ $(document).ready(function () {
 
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $(".tweet-container").append($tweet);
+      $(".tweet-container").prepend($tweet);
     }
   };
 
