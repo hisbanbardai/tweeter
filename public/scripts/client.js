@@ -99,15 +99,24 @@ $(document).ready(function () {
     const textValue = $(this).find("#tweet-text").val();
     const textLength = textValue.length;
 
+    //making sure error validation is hidden at first
+    $errorMessage = $(".error-message").css('display','none');
+
     if (!textLength) {
-      alert(
+      $errorMessage.text(
         "You are trying to post an empty tweet. Please enter some content first."
       );
+      $(".new-tweet").prepend($errorMessage);
+      $errorMessage.slideDown("slow");
       return;
     }
 
     if (textLength > maxTweetLength) {
-      alert(`The maximum length of tweet is ${maxTweetLength} characters.`);
+      $errorMessage.text(
+        `The maximum length of tweet is ${maxTweetLength} characters.`
+      );
+      $(".new-tweet").prepend($errorMessage);
+      $errorMessage.slideDown("slow");
       return;
     }
 
