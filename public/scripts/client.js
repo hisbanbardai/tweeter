@@ -4,11 +4,21 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+//for escaping XSS
+const escapeHtml = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 $(document).ready(function () {
   //FUNCTION TO CREATE TWEET ELEMENT STRUCTURE
 
   const createTweetElement = function (tweet) {
     //creating html structure and wrapping it in a jquery object
+    const tweetContent = $(
+      `<textarea name="text" readonly>${tweet.content.text}</textarea>`
+    );
     const markup = $(`<article>
   <header>
     <ul>
@@ -21,7 +31,7 @@ $(document).ready(function () {
       <li>${tweet.user.handle}</li>
     </ul>
   </header>
-  <textarea name="text" readonly>${tweet.content.text}</textarea>
+  <textarea name="text" readonly>${escapeHtml(tweet.content.text)}</textarea>
   <footer>
     <ul>
       <li>${timeago.format(tweet.created_at)}</li>
@@ -81,6 +91,7 @@ $(document).ready(function () {
   $("form").on("submit", function (event) {
     event.preventDefault();
 
+    const maxTweetLength = 140;
     const url = "/tweets/";
     const postData = $(this).serialize();
 
@@ -95,10 +106,8 @@ $(document).ready(function () {
       return;
     }
 
-    if (textLength > 140) {
-      alert(
-        "The maximum length of tweet is 140 characters."
-      );
+    if (textLength > maxTweetLength) {
+      alert(`The maximum length of tweet is ${maxTweetLength} characters.`);
       return;
     }
 
@@ -106,6 +115,11 @@ $(document).ready(function () {
       .done(function () {
         // Handle a successful response
         console.log("Request successful");
+        //fetching latest tweets
+        loadTweets();
+        //Clearing the text from textarea and updating the counter
+        $("form").find("#tweet-text").val("");
+        $(".counter").val(maxTweetLength);
       })
       .fail(function () {
         // Handle any errors that occurred during the request
