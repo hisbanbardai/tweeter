@@ -29,11 +29,17 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/tweet-list.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/validation-error.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
+      integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
@@ -78,34 +84,10 @@
         </form>
 
         <!-- tweets section -->
-        <section class="tweet-container">
-          <article class="tweet">
-            <header>
-              <ul>
-                <div class="user-info">
-                  <li class="user-picture">
-                    <img src="https://i.imgur.com/73hZDYK.png" alt="user-picture" />
-                  </li>
-                  <li class="user-name">Newton</li>
-                </div>
-                <li class="tweeter-handle">@SirIsaac</li>
-              </ul>
-            </header>
-            <textarea name="text" readonly>
-If I have seen further it is by standing on the shoulders of giants</textarea
-            >
-            <footer>
-              <ul>
-                <li>10 days ago</li>
-                <div class="icons">
-                  <li><i class="fa-solid fa-flag"></i></li>
-                  <li><i class="fa-solid fa-retweet"></i></li>
-                  <li><i class="fa-sharp fa-solid fa-heart"></i></li>
-                </div>
-              </ul>
-            </footer>
-          </article>
-        </section>
+        <section class="tweet-container"></section>
+
+        <!-- validation error message -->
+        <div class="error-message"></div>
       </section>
     </main>
   </body>
