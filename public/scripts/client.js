@@ -11,7 +11,8 @@ const escapeHtml = function (str) {
   return div.innerHTML;
 };
 
-$(document).ready(function () {
+$(document).ready(function() {
+  const maxTweetLength = 140;
   //FUNCTION TO CREATE TWEET ELEMENT STRUCTURE
 
   const createTweetElement = function (tweet) {
@@ -86,12 +87,25 @@ $(document).ready(function () {
 
   loadTweets();
 
+  //EVENT HANDLER: TO HIDE ERROR MESSAGE IF FOCUS IS ON INPUT FIELD AND LENGTH OF CHARACTERS IS LESS THAN MAX TWEET LENGTH
+
+  $("#tweet-text").on("focus", function (event) {
+    //fetching user input's value and length
+    const textValue = $(this).val();
+    const textLength = textValue.length;
+    const errorMessageDisplayValue = $(".error-message").css("display");
+
+    if (textLength < maxTweetLength && errorMessageDisplayValue !== "none") {
+      $(".error-message").slideUp("slow");
+      return;
+    }
+  });
+
   //EVENT HANDLER: WHEN USER SUBMITS A TWEET
 
   $("form").on("submit", function (event) {
     event.preventDefault();
 
-    const maxTweetLength = 140;
     const url = "/tweets/";
     const postData = $(this).serialize();
 
@@ -100,7 +114,7 @@ $(document).ready(function () {
     const textLength = textValue.length;
 
     //making sure error validation is hidden at first
-    $errorMessage = $(".error-message").css('display','none');
+    $errorMessage = $(".error-message").css("display", "none");
 
     if (!textLength) {
       $errorMessage.text(
