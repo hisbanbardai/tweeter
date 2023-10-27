@@ -1,7 +1,8 @@
 .navbar {
   height: 120px;
-  background-color: #4056A1;
-  color: #FFFFFF;
+  background-color: burlywood;
+  background-image: url(../images/asfalt-dark.png);
+  color: #ffffff;
   padding-left: 1.5em;
   padding-right: 1.5em;
 
@@ -14,23 +15,30 @@
   top: 0;
 }
 
-.navbar-logo{
+.navbar-logo {
   font-family: Bungee, sans-serif;
   font-size: 30px;
- }
+}
 
- .navbar-menu {
+.navbar-menu {
   display: flex;
   flex-direction: column;
- }
+}
 
-.navbar-menu span{
+.navbar-menu span {
   font-size: 20px;
- }
+}
 
-
- .navbar-menu i {
+.navbar-menu i {
   align-self: center;
   font-size: 16px;
   color: rgba(255, 0, 0);
- }
+}
+
+
+/* Desktop Styles */
+@media only screen and (min-width: 1024px) {
+  .navbar {
+    background-color: #4056a1;
+  }
+}

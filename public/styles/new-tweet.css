@@ -37,3 +37,11 @@ form {
 .color-counter {
   color: red;
 }
+
+
+/* Desktop Styles */
+@media only screen and (min-width: 1024px) {
+  .new-tweet {
+    margin-top: 100px;
+  }
+}
